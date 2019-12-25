@@ -32,8 +32,11 @@ public class CatchEventController {
         try {
             ValidationUtil.assertNotNull(eventRequest.getUserId());
             registerEventService.register(eventRequest);
-        } catch (Exception e) {
-            LOGGER.info("Exception while registering event: " + e);
+        } catch (IllegalArgumentException e) {
+            LOGGER.info("Exception in input " + e);
+            throw new IllegalArgumentException();
+        }catch (Exception e){
+            LOGGER.debug("Exception while registering event: " + e);
         }
     }
 }
