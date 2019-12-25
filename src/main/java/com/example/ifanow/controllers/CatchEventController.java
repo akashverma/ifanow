@@ -2,9 +2,11 @@ package com.example.ifanow.controllers;
 
 import com.example.ifanow.entities.dtos.EventRequest;
 import com.example.ifanow.services.RegisterEventService;
+import com.example.ifanow.utils.ValidationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +30,7 @@ public class CatchEventController {
     @PostMapping(value = "register/event")
     public void registerEvent(@RequestBody EventRequest eventRequest) {
         try {
+            ValidationUtil.assertNotNull(eventRequest.getUserId());
             registerEventService.register(eventRequest);
         } catch (Exception e) {
             LOGGER.info("Exception while registering event: " + e);

@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class IfanowApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(IfanowApplication.class, args); 
+        SpringApplication.run(IfanowApplication.class, args);
     }
 
 }
